@@ -67,14 +67,14 @@ const City: FC<TCoordinates & { timerToUpdate: number; unit: TUnit }> = ({
   }
 
   return (
-    <div className={styles.cityWrapper}>
-      <div className={styles.cityName}>
+    <section className={styles.cityWrapper}>
+      <h1 className={styles.cityName}>
         {weatherInfo?.name}
-      </div>
+      </h1>
       <div className={styles.cityInfo}>
-        <div className={`${styles.cityTemp} ${tempClass}`}>
+        <strong className={`${styles.cityTemp} ${tempClass}`}>
           {Math.floor(weatherInfo?.main?.temp ?? 0)} {tempSymbol}
-        </div>
+        </strong>
         <div className={styles.cityExtraInfo}>
           <div className={styles.cityExtraInfoItem}>
             Humidity: {weatherInfo?.main?.humidity}%
@@ -84,7 +84,7 @@ const City: FC<TCoordinates & { timerToUpdate: number; unit: TUnit }> = ({
           </div>
         </div>
       </div>
-    </div>
+    </section>
   );
 };
 

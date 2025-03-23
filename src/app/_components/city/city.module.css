@@ -21,10 +21,9 @@
   }
   
   .cityName {
-    font-size: 28px;
     font-weight: 600;
     margin-bottom: 8px;
-    height: 37px;
+    min-height: 31px;
     min-width: 100px;
   }
   
