@@ -1,6 +1,7 @@
 "use client";
 
 import { useRef, useEffect, FC, useState } from "react";
+import City from "../city/page";
 import { CITIES as cities } from "./constants";
 import styles from "./weather.module.css";
 
@@ -20,7 +21,7 @@ const Weather: FC = () => {
   return (
     <div className={styles.weatherWrapper}>
       {cities.map(({ id, lat, lon }) => (
-        <div key={id}>{lat} {lon} {timer}</div>
+        <City key={id} lat={lat} lon={lon} timerToUpdate={timer} />
       ))}
     </div>
   );
