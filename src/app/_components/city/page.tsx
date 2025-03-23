@@ -34,7 +34,7 @@ const City: FC<TCoordinates & { timerToUpdate: number; unit: TUnit }> = ({
     startTransition(() => {
       fetchData({ lat, lon });
     });
-  }, [lat, lon, timerToUpdate]);
+  }, [lat, lon, timerToUpdate, unit]);
 
   const tempSymbol = useMemo(() => {
     return TEMP_UNITS[unit as keyof typeof TEMP_UNITS] ?? KEVIN_UNIT
