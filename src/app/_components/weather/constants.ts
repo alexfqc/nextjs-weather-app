@@ -15,7 +15,7 @@ export const CITIES = [
       id: 3,
       lat: -28.01,
       lon: -49.59,
-      name: "Ubirici",
+      name: "Urubici",
     },
   ];
   
