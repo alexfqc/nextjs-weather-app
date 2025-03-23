@@ -4,13 +4,15 @@ export const dynamic = "force-dynamic";
 
 import { FC, useEffect, useTransition, useState, useMemo } from "react";
 import { fetchCityWeather } from "./fetchCityWeather";
-import { type TCoordinates, type TWeatherAPI } from "../../_types/weather";
+import { type TCoordinates, type TWeatherAPI, type TUnit } from "../../_types/weather";
+import { TEMP_UNITS, KEVIN_UNIT } from './constants'
 import styles from "./city.module.css";
 
-const City: FC<TCoordinates & { timerToUpdate: number }> = ({
+const City: FC<TCoordinates & { timerToUpdate: number; unit: TUnit }> = ({
   lat,
   lon,
   timerToUpdate,
+  unit
 }) => {
   const [isPending, startTransition] = useTransition();
   const [weatherInfo, setWeatherInfo] = useState<TWeatherAPI | null>(null);
@@ -21,6 +23,7 @@ const City: FC<TCoordinates & { timerToUpdate: number }> = ({
       const payload = await fetchCityWeather({
         lat,
         lon,
+        unit,
       });
 
       if (payload.status === "success") {
@@ -32,6 +35,10 @@ const City: FC<TCoordinates & { timerToUpdate: number }> = ({
       fetchData({ lat, lon });
     });
   }, [lat, lon, timerToUpdate]);
+
+  const tempSymbol = useMemo(() => {
+    return TEMP_UNITS[unit as keyof typeof TEMP_UNITS] ?? KEVIN_UNIT
+  }, [unit]);
 
   const tempClass = useMemo(() => {
     const temp = Math.floor(weatherInfo?.main?.temp ?? 0);
@@ -51,7 +58,7 @@ const City: FC<TCoordinates & { timerToUpdate: number }> = ({
       </div>
       <div className={styles.cityInfo}>
         <div className={`${styles.cityTemp} ${tempClass}`}>
-          {Math.floor(weatherInfo?.main?.temp ?? 0)} {weatherInfo?.temp_unit}
+          {Math.floor(weatherInfo?.main?.temp ?? 0)} {tempSymbol}
         </div>
         <div className={styles.cityExtraInfo}>
           <div className={styles.cityExtraInfoItem}>

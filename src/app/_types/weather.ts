@@ -52,6 +52,7 @@ export type TCoordinates = {
     id: string;
     name: string;
     cod: string;
-    temp_unit?: "°C" | "°F" | "°K";
   };
+
+  export type TUnit = "metric" | "imperial" | "default";
   

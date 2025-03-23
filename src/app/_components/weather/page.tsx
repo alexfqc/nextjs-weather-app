@@ -21,7 +21,7 @@ const Weather: FC = () => {
   return (
     <div className={styles.weatherWrapper}>
       {cities.map(({ id, lat, lon }) => (
-        <City key={id} lat={lat} lon={lon} timerToUpdate={timer} />
+        <City key={id} lat={lat} lon={lon} timerToUpdate={timer} unit="metric" />
       ))}
     </div>
   );
