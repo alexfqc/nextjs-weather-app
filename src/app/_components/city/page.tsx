@@ -77,7 +77,7 @@ const City: FC<TCoordinates & { timerToUpdate: number; unit: TUnit; id:number }>
           {Math.floor(weatherInfo?.main?.temp ?? 0)} {tempSymbol}
         </strong>
         <div className={styles.cityExtraInfo}>
-          <div className={styles.cityExtraInfoItem}>
+          <div className={styles.cityExtraInfoItem} data-testid={`humidity${id}`}>
             Humidity: {weatherInfo?.main?.humidity}%
           </div>
           <div className={styles.cityExtraInfoItem}>
