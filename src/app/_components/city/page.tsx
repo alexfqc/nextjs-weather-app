@@ -14,7 +14,7 @@ const City: FC<TCoordinates & { timerToUpdate: number; unit: TUnit }> = ({
   timerToUpdate,
   unit
 }) => {
-  const [isPending, startTransition] = useTransition();
+  const [isLoading, startTransition] = useTransition();
   const [weatherInfo, setWeatherInfo] = useState<TWeatherAPI | null>(null);
 
   useEffect(() => {
@@ -51,10 +51,25 @@ const City: FC<TCoordinates & { timerToUpdate: number; unit: TUnit }> = ({
     return styles.red;
   }, [weatherInfo]);
 
+  if (isLoading || !weatherInfo) {
+    return (
+      <div className={styles.cityWrapper}>
+        <div className={`${styles.cityName} ${styles.loading}`} />
+        <div className={styles.cityInfo}>
+          <div className={`${styles.cityTemp} ${styles.loading}`} />
+          <div className={`${styles.cityExtraInfo} ${styles.cityExtraInfoAnimation}`}>
+            <div className={`${styles.cityExtraInfoItem} ${styles.loading}`} />
+            <div className={`${styles.cityExtraInfoItem} ${styles.loading}`} />
+          </div>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className={styles.cityWrapper}>
       <div className={styles.cityName}>
-        {isPending ? "loading" : weatherInfo?.name}
+        {weatherInfo?.name}
       </div>
       <div className={styles.cityInfo}>
         <div className={`${styles.cityTemp} ${tempClass}`}>

@@ -12,16 +12,26 @@
   .cityInfo {
     display: flex;
   }
+
+  .loading {
+    background-color: rgba(255, 255, 255, 0.5);
+    animation: fadein 1s infinite;
+    border-radius: 2px;
+  }
   
   .cityName {
     font-size: 28px;
     font-weight: 600;
     margin-bottom: 8px;
+    height: 37px;
+    min-width: 100px;
   }
   
   .cityTemp {
     font-size: 22px;
     font-weight: 500;
+    min-width: 25px;
+    min-height: 31px;
   }
   
   .cityExtraInfo {
@@ -31,13 +41,19 @@
     padding-left: 8px;
     box-sizing: border-box;
   }
+
+  .cityExtraInfoAnimation {
+    justify-content: space-between;
+  }
   
   .cityExtraInfoItem {
     font-size: 12px;
     opacity: 0.7;
     font-weight: 500;
+    min-height: 14px;
+    min-width: 60px;
   }
-  
+
   .orange {
     color: #ffa500;
   }
@@ -48,5 +64,11 @@
   
   .blue {
     color: #2d6dea;
+  }
+
+  @keyframes fadein {
+    0%   { opacity: 0.25; }
+    50% { opacity: 1; }
+    100% { opacity: 0.25; }
   }
   
