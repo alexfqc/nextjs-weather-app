@@ -11,7 +11,7 @@ test("temperature should be displayed in celsius degree", async ({ page }) => {
     await page.goto("/");
     const firstTemp = await page.getByTestId('temp1').textContent();
     const secondTemp = await page.getByTestId('temp2').textContent();
-    const thirdTemp = await page.getByTestId('temp2').textContent();
+    const thirdTemp = await page.getByTestId('temp3').textContent();
 
     const firstTempArr = firstTemp?.split('');
     const secondTempArr = secondTemp?.split('');
