@@ -21,6 +21,9 @@ const Weather: FC = () => {
   return (
     <div className={styles.weatherWrapper}>
       {cities.map(({ id, lat, lon }) => (
+        /* unit is hardcoded to metric because requirements aks for celsius degrees
+          otherwise useState could be used for changing unit 
+        */
         <City key={id} lat={lat} lon={lon} timerToUpdate={timer} unit="metric" />
       ))}
     </div>

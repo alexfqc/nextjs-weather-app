@@ -7,6 +7,9 @@ type TCityWeatherReturn<T> =
   | { status: "success"; data: T }
   | { status: "error"; errorMessage: string };
 
+/* This function is needed for running code in the server, 
+ * avoiding security issues like exposing OPEN_WEATHER_API_KEY 
+*/
 export const fetchCityWeather = async <T extends TWeatherAPI>({
   lat,
   lon,

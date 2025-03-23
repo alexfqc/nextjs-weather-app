@@ -4,6 +4,9 @@ type TReturn<T> =
   | { status: "success"; data: T }
   | { status: "error"; errorMessage: string };
 
+/* reusable function for fetching data in the server, instead of client
+ * avoing security issues
+*/
 const fetchData = async <T>(url: string): Promise<TReturn<T>> => {
   try {
     const response = await fetch(url);
