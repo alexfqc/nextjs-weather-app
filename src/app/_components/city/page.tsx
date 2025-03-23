@@ -8,11 +8,12 @@ import { type TCoordinates, type TWeatherAPI, type TUnit } from "../../_types/we
 import { TEMP_UNITS, KEVIN_UNIT } from './constants'
 import styles from "./city.module.css";
 
-const City: FC<TCoordinates & { timerToUpdate: number; unit: TUnit }> = ({
+const City: FC<TCoordinates & { timerToUpdate: number; unit: TUnit; id:number }> = ({
   lat,
   lon,
   timerToUpdate,
-  unit
+  unit,
+  id
 }) => {
   const [isLoading, startTransition] = useTransition();
   const [weatherInfo, setWeatherInfo] = useState<TWeatherAPI | null>(null);
@@ -72,7 +73,7 @@ const City: FC<TCoordinates & { timerToUpdate: number; unit: TUnit }> = ({
         {weatherInfo?.name}
       </h1>
       <div className={styles.cityInfo}>
-        <strong className={`${styles.cityTemp} ${tempClass}`}>
+        <strong className={`${styles.cityTemp} ${tempClass}`} data-testid={`temp${id}`}>
           {Math.floor(weatherInfo?.main?.temp ?? 0)} {tempSymbol}
         </strong>
         <div className={styles.cityExtraInfo}>

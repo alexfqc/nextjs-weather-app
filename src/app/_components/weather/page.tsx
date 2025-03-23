@@ -24,7 +24,7 @@ const Weather: FC = () => {
         /* unit is hardcoded to metric because requirements aks for celsius degrees
           otherwise useState could be used for changing unit 
         */
-        <City key={id} lat={lat} lon={lon} timerToUpdate={timer} unit="metric" />
+        <City key={id} lat={lat} lon={lon} timerToUpdate={timer} id={id} unit="metric" />
       ))}
     </div>
   );
